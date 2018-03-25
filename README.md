@@ -1,0 +1,1 @@
+# PariwisataNTB-ApiTypeScript
