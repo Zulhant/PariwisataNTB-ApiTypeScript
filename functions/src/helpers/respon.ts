@@ -21,4 +21,8 @@ export default class responGenerator {
       return builResponse(401, message)
    }
 
+   static noPound(message) {
+      return builResponse(400, message)
+   }
+
 }
