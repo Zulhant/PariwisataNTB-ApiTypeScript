@@ -3,25 +3,19 @@ import * as express from 'express';
 import * as admin from 'firebase-admin';
 import * as cors from 'cors';
 import { https } from 'firebase-functions';
-import mongoose = require('mongoose');
-import * as config from './config/DB';
 
-import {
-  RouterUser
-} from './Router';
+import RouterWisata from './Router/Router-wisata';
 
 const app = express();
-mongoose.connect(config.DB);
-mongoose.Promise = global.Promise;
-
 app.use(
   cors({
     origin: true
   })
 );
+
 admin.initializeApp(functions.config().firebase);
+export const DB = admin.firestore();
 
-
-app.use('/user', RouterUser);
+app.use('/wisata', RouterWisata);
 
 exports.api = functions.https.onRequest(app)
